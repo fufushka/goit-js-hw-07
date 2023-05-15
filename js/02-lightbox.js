@@ -15,7 +15,7 @@ const markup = galleryItems
   })
   .join("");
 refs.gallery.innerHTML = markup;
-var lightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
 });

@@ -20,7 +20,9 @@ refs.gallery.innerHTML = markup;
 refs.gallery.addEventListener("click", openModalWindow);
 function openModalWindow(event) {
   event.preventDefault();
-
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
   const imageUrl = event.target.dataset.source;
   console.log(imageUrl);
   const instance = basicLightbox.create(`
@@ -34,6 +36,7 @@ function openModalWindow(event) {
   function closeModalOnEscape(event) {
     if (event.code === "Escape" && visible) {
       instance.close();
+      document.removeEventListener("keydown", closeModalOnEscape);
     }
   }
 }
